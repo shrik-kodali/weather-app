@@ -3,8 +3,7 @@ URL to get the weather conditions (Temp, Humidity, wind speed & conditions) and 
 
 http://localhost:8080/weather/getWeather?city=Austin,USA
 
-
-
+![image](https://github.com/shrik-kodali/weather-app/assets/16160991/7c1412ca-cd2b-4dd7-b4a6-6b85f836a5b4)
 
 Keys
 
