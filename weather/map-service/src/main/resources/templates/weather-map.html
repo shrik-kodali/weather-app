@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+    <meta charset="UTF-8">
+    <title>Current Weather</title>
+</head>
+<body>
+<input type="hidden" name="lng" id="lng" value="${weather.lon}">
+<input type="hidden" name="lat" id="lat" value="${weather.lat}">
+
+<script type="text/javascript">
+      google.charts.load("current", {
+        "packages":["map"],
+        // Note: you will need to get a mapsApiKey for your project.
+        // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+        "mapsApiKey": "AIzaSyAmsnVGBwTG6pe_PFlfOKN3nr04K6WXXx4"
+      });
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+         var longitude = document.getElementById('lng').value;
+         var latitude  = document.getElementById('lat').value;
+        var data = google.visualization.arrayToDataTable([
+          ['Lat', 'Long', 'Name'],
+          [30.2672,  -97.7431, 'Austin'],
+          [32.7668,  -96.7836, 'Dallas'],
+        ]);
+
+        var map = new google.visualization.Map(document.getElementById('map_div'));
+        map.draw(data, {
+          showTooltip: true,
+          showInfoWindow: true
+        });
+      }
+
+    </script>
+<div>
+    <h3>Current Conditions</h3>
+    <h3>Temperature</h3>
+    <p th:text="${weather.temperature} + ' &#8457;'">Temperature</p>
+    <h3>Humidity</h3>
+    <p th:text="${weather.humidity} + ' &#8457;'">Humidity</p>
+    <h3>Wind Speed</h3>
+    <p th:text="${weather.windSpeed} + ' mph'"></p>
+    <h3>Conditions</h3>
+    <p th:text="${weather.condition}" >Conditions</p>
+    <h3>Latitude</h3>
+    <p th:text="${weather.lat}" >Latitude</p>
+
+    <div id="map_div" style="width: 800px; height: 700px"></div>
+
+</div>
+
+
+
+
+</body>
+</html>

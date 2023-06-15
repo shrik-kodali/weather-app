@@ -1,0 +1,13 @@
+weather:
+  map-url: http://api.openweathermap.org
+  api-key: 47664ce12885910ed13f37752ab22503
+  api-units: metric
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+        errorDecoder: com.ai.weather.client.DefaultErrorDecoder
